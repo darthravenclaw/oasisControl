@@ -1,0 +1,98 @@
+body{
+    background-color: rgb(233,168,111);
+    background-image: url("Yobe_Oasis_photo.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    scroll-padding: 2rem;
+
+  font-family:'Gill Sans', 'Gill Sans MT', "Calibri", 'Trebuchet MS', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0%;
+
+}
+header{
+    background-color: rgba(55, 55, 167,0.8);
+    width:100%;
+    font-size: 4rem;
+    color: rgb(228, 204, 66);
+    text-align: center;
+    padding: 2%;
+}
+.time{
+    margin: 1%;
+}
+.container{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; 
+    width: 250px;
+    height: 120px;
+    margin: 1%;
+    margin-top: 2%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   background-color: rgba(235, 228, 196, 0.6);
+}
+.container:hover{
+    width: 275px;
+    height: 160px;
+    background-color: rgba(235, 228, 196,0.8);
+}
+.data{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+#weekendUpdate{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.title1{
+    text-align: center;
+    font-size: 1.3em;
+  
+}
+.title2{
+    text-align: center;
+    font-size: 0.8em;
+  
+}
+.value1{
+    text-align: center;
+    font-size: 3.5em;
+}
+.value2{
+    text-align: center;
+    font-size: 1.5em;
+}
+.container:hover .title1{
+    font-size: 2em;
+}
+.container:hover .title2{
+    font-size: 1em;
+}
+.titlePredicted {
+margin-bottom: 3%;
+font-size: 2em;
+}
+.container:hover .titlePredicted{
+    font-size: 2.5em;
+}
+.container:hover .value1{
+    font-size: 4em;
+}
+.container:hover .value2{
+    font-size: 2em;
+}
