@@ -2,8 +2,9 @@
   "name": "oasiscontrol",
   "version": "1.0.0",
   "description": "shows the tempatures around Oasis Yacht Club",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "devStart": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
