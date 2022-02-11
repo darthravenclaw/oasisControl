@@ -1,0 +1,1 @@
+This is a project to monitor the tempature at my house including the pool in summer and get the forcast for the weekend.  It involved both a server and a front end client that reports the tempatures recovered from various apis.
