@@ -4,12 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/vue@3.0.2"></script>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style2.css" />
+    <script src="script2.js" defer></script>
     <title>Oasis Weather</title>
   </head>
   <body>
@@ -17,22 +14,17 @@
       <header>
         <div class="space"></div>
         <h1>Oasis Yacht Club</h1>
-      
+        <div class="button-group">
+          <button id="weekend" @click="setWeekend()">Weekend</button
+          ><button id="full" @click="setFull()">Full Forcast</button>
+        </div>
       </header>
-      
-<div class="allContainer">
-
       <div class="time-container">
         <div class="date-data">{{date}}</div>
         <div class="title2">Time</div>
         <div class="time-data">{{time}}</div>
       </div>
-  <div>
-    <h2>
-      Current Temps at the Yacht Club
-    </h2>
-  </div>
-  
+
       <div class="card-container">
         <div class="full-card" :class="[{ freezing: data.indoorTemp<32 }]">
           <div class="dataTitle">Indoor Temp</div>
@@ -54,15 +46,6 @@
           <div class="label">Pool Humidity</div>
           <div class="data">100%</div>
         </div>
-         <div class="data-header">
-    <h2 >
-      Forcast
-    </h2>
-               <div class="button-group">
-          <button id="weekend" @click="setWeekend()">Weekend</button
-          ><button id="full" @click="setFull()">Full Forcast</button>
-        </div>
-  </div>
         <div
           class="full-card"
           :class="[{ freezing: day.high_temp<32 }]"
@@ -79,33 +62,24 @@
             <div class="label">Low</div>
             <div class="data">{{day.min_temp}}</div>
           </div>
-                    <div class="label-container" v-show="day.showFull">
-            <div class="dew label">Dew point</div>
-            <div class="dew data">{{day.dewpt}}</div>
-          </div>
           <div class="label-container">
             <div class="description data">{{day.weather.description}}</div>
           </div>
-          <div class="sun-container">
           <div class="label-container" v-show="day.showFull">
             <div class="sunriseLabel label">sunrise</div>
             <div class="sunrise data">{{getTime(day.sunrise_ts)}}</div>
           </div>
           <div class="label-container" v-show="day.showFull">
             <div class="sunsetLabel label">sunset</div>
-            <div class="data">
+            <div class="sunset data"></div>
             {{getTime(day.sunset_ts)}}
           </div>
-          </div>
-             </div>
           <div class="precip-container" v-show="day.pop>0">
             <div class="prob-precip label">probability of precipitation</div>
             <div class="prob-precip data">{{day.pop}}%</div>
-            
-            <div class = "precip-amount-container"> 
             <div
               class="label-container"
-              v-if="Math.round(day.precip/25.4*100)/100 > 0"
+              v-show="Math.round(day.precip/25.4*100)/100 > 0"
             >
               <div class="precip label">Total rainfall {{day.precip}}</div>
               <div class="precip data">
@@ -114,49 +88,36 @@
             </div>
             <div
               class="label-container"
-              v-if="!day.snow_depth<0.01">
-            
-              <div class="label" v-show="!day.snow_depth<0.01">Snow Depth</div>
+              v-show="Math.round(day.precip/25.4*100)/100 > 0"
+            >
+              <div class="label" v-show="!day.snow_depth<0.01">snow_depth</div>
               <div class="data" v-show="!day.snow_depth<0.01">
                 {{Math.round(day.snow_depth/25.4*100)/100}} in
               </div>
-            
             </div>
           </div>
-          </div>
-          <div class="wind-container">
           <div class="label-container" v-show="day.showFull">
             <div class="wind label">Wind Speed</div>
             <div class="wind data">{{day.wind_spd}}m/s</div>
           </div>
           <div class="label-container" v-show="day.showFull">
-            <div class="label">Wind Gust spd</div>
+            <div class="label">wind_gust_spd</div>
             <div class="data">{{day.wind_gust_spd}}</div>
           </div>
-               </div>
-
-          <div class="ozone-container">
+          <div class="label-container" v-show="day.showFull">
+            <div class="dew label">Dew point</div>
+            <div class="dew data">{{day.dewpt}}</div>
+          </div>
           <div class="label-container" v-show="day.showFull">
             <div class="ozone label">Ozone</div>
             <div class="ozone data">{{day.ozone}}</div>
           </div>
-              <div class="label-container" v-show="day.showFull">
+          <div class="label-container" v-show="day.showFull">
             <div class="label">uv</div>
             <div class="data">{{day.uv}}(0-11+)</div>
           </div>
-          </div>
-        
-            <div class="label endLabel" v-show="!day.showFull">
-                click for more details
-              </div>
-          <div class="label endLabel" v-show="day.showFull">
-                click for summary
-              </div>
-           
         </div>
       </div>
     </div>
-      
-      </div>
   </body>
 </html>

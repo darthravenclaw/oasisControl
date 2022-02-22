@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <script src="script.js" defer></script>
+    <title>Oasis Weather</title>
+  </head>
+  <div id="app">
+    <body>
+      <header>Oasis Yacht Club</header>
+      <div class="time">
+        <div class="value1" id="dateVal">{{date}}</div>
+        <div class="title2">Time</div>
+        <div class="value2" id="timeVal">{{time}}</div>
+      </div>
+      <div class="data">
+        <div class="container" :class="[{ freezing: indoorTemp<32 }]">
+          <div class="title1">Indoor Temp</div>
+          <div class="value1" id="indoorTemp">{{indoorTemp}}</div>
+          <div class="title2">Indoor Humidity</div>
+          <div class="value2" id="indoorHumidity">{{indoorHum}}</div>
+        </div>
+
+        <div class="container" :class="[{ freezing: outdoorTemp<32 }]">
+          <div class="title1">Outdoor Temp</div>
+          <div class="value1" id="outdoorTemp">{{outdoorTemp}}</div>
+          <div class="title2">Outdoor Humidity</div>
+          <div class="value2" id="outdoorHumidity">{{outdoorHum}}</div>
+        </div>
+
+        <div class="container">
+          <div class="title1">Pool Temp</div>
+          <div class="value1" id="poolTemp">{{poolTemp}}</div>
+          <div class="title2">Pool Humidity</div>
+          <div class="value2">100%</div>
+        </div>
+        <div id="weekendUpdate">
+          <div class="container" :class="d.class" v-for="d in days">
+            <div class="title1 titlePredicted" id="fridayDate">{{d.Date}}</div>
+            <div class="title1" id="fridayDisc">{{d.Disc}}</div>
+            <div class="value1" id="fridayHigh">{{d.High}}</div>
+          </div>
+        </div>
+      </div>
+    </body>
+  </div>
+</html>

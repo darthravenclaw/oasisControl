@@ -48,16 +48,13 @@ const app = Vue.createApp({
     },
     setup() {
       setInterval(this.updateTime, 1000);
-      
       console.log("setup run");
     },
     setWeekend() {
       console.log("weekend");
-      
       let foundWeekend = false;
-   //   console.log(this.data.days);
       for (let i = 0; i < this.data.days.length; i++) {
-       // console.log(this.data.days[i].dayCode);
+        console.log(this.data.days[i].dayCode);
         if (!foundWeekend) {
           if (
             this.data.days[i].dayCode == 0 ||
@@ -99,19 +96,20 @@ const app = Vue.createApp({
       day.showFull = !day.showFull;
     },
     getData() {
-       const apiUrl = "weather";
-    fetch(apiUrl)
+      fetch("./data.json")
         //   fetch("https://fair-probable-wrinkle.glitch.me/weather")
         .then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      console.log("error");
-    }
-  }).then((temp)=>JSON.parse(temp))
-      .then((data) => {
+          console.log("asdf");
+          if (res.ok) {
+            return res.json();
+          } else {
+            console.log("error");
+          }
+        })
+
+        .then((data) => {
           this.data = data;
-         // console.log(data);
+          console.log(data);
           this.data.days.forEach((day) => {
             let dateString = day.valid_date;
             let dArray = dateString.split("-");
@@ -120,9 +118,10 @@ const app = Vue.createApp({
             if (!("showFull" in day)) {
               day.showFull = false;
             }
-          
+            if (!("showWeekend" in day)) {
+              day.showWeekend = true;
+            }
           });
-      this.setWeekend()
         });
     },
   },
